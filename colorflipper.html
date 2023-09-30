@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .color{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: black;
+        }
+
+        .btn{
+            width: 5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgb(85, 246, 87);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="color">
+        <button class="btn">
+            start
+        </button>
+    </div>
+</body>
+<script>
+
+    function colorFliper() {
+        let hex = "012345689ABCDEF"
+        let color = "#"
+        for(let i = 0 ; i < 6 ; i++){
+
+        color += hex[Math.floor(Math.random() * 16)]
+
+        console.log(color)
+
+    }
+    return  color
+}
+
+const colorChenger =  document.querySelector(".color")
+
+
+const buttonChenger =  document.querySelector(".btn")
+
+colorChenger.addEventListener("click", function () {
+    buttonChenger.style.backgroundColor = colorFliper()
+    
+})
+
+
+buttonChenger.addEventListener("click", function(){
+    colorChenger.style.backgroundColor = colorFliper()
+}
+)
+</script>
+</html>

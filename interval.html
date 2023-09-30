@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="heading">
+      <h3>learn javaScript</h3>
+
+      <button class="start">start</button>
+      <button class="stop">stop</button>
+      <button class="keyboard">button</button>
+    </div>
+  </body>
+  <script>
+    const start = document.querySelector(".start")
+
+    const stop = document.querySelector(".stop");
+
+    document.querySelector("keyboard").addEventListener("keydown")
+    let interval;
+
+    const inter = function (){ 
+        console.log(new Date())
+    };
+
+   start.addEventListener("click", () => {
+    
+    interval =   setInterval(inter,1000)
+
+
+});
+   
+stop.addEventListener("click", () =>{
+        clearInterval(interval)
+    })
+
+
+
+
+
+
+  </script>
+</html>

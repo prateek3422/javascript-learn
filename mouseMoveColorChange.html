@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>color changer</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .center{
+    width: 30vw;
+    height: 20vh;
+    background-color: rgb(186, 186, 186);
+}
+    </style>
+</head>
+<body>
+        <div class="center"></div>
+    
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    const rect  =  document.querySelector(".center")
+
+    rect.addEventListener("mousemove", (details)=>{
+    const rectLocation = rect.getBoundingClientRect()
+    const insideMouse = details.clientX - rectLocation.left
+
+    // console.log(insideMouseRight)
+    // console.log(rectLocation)
+
+
+
+    if(insideMouse < rectLocation.width/2){
+       const redColor =   gsap.utils.mapRange(0, rectLocation.width/2, 255,0, insideMouse)
+    
+       gsap.to(rect, {
+        backgroundColor :`rgb(${redColor}, 0 , 0)`,
+        ease:Power4,
+       })
+    }
+    else{
+        const blueColor =   gsap.utils.mapRange( rectLocation.width/2, rectLocation.width,0, 255, insideMouse)
+    
+       gsap.to(rect, {
+        backgroundColor :`rgb(0, 0 , ${blueColor})`,
+        ease:Power4,
+       })
+    }
+    })
+</script>
+
+</html>

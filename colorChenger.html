@@ -1,0 +1,56 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>color changer</title>
+</head>
+<body>
+    <button class="color" id="grey">grey</button>
+    <button class="color" id="blue">blue</button>
+    <button class="color" id="yellow">yellow</button>
+    <button class="color" id="red">red</button>
+</body>
+<script>
+    const color = document.querySelectorAll(".color")
+const body = document.querySelector("body")
+
+color.forEach((elem)=>{
+    // console.log(elem)
+    elem.addEventListener("click", function (e) {
+        // console.log(e);
+        // console.log(e.target)
+
+        // if(e.target.id === 'grey'){
+        //     body.style.backgroundColor = e.target.id
+
+        // }
+        // if(e.target.id === 'blue'){
+        //     body.style.backgroundColor = e.target.id
+
+        // }
+        // if(e.target.id === 'yellow'){
+        //     body.style.backgroundColor = e.target.id
+
+        // }
+        // if(e.target.id === 'red'){
+        //     body.style.backgroundColor = e.target.id
+
+        // }
+
+        switch(e.target){
+            case grey: body.style.backgroundColor = "grey" ;
+            break
+            case blue: body.style.backgroundColor = e.target.id ;
+            break
+            case yellow: body.style.backgroundColor = e.target.id ;
+            break
+            case red: body.style.backgroundColor = e.target.id ;
+            break
+        }
+
+    })
+})
+</script>
+</html> 
