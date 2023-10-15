@@ -1,3 +1,18 @@
+// Number,
+// BigInt,
+// String,
+// Boolean,
+// null ,
+// undefined
+// Symbol
+
+
+console.log(typeof  undefined)  //undefined
+console.log(typeof null) //object
+
+
+
+
 let challange = '30 Days Of JavScript'
 console.log(challange)
 console.log(challange.length)
@@ -19,4 +34,3 @@ console.log(challange.search("Day"))
 // let string = 'Facebook, Google, Microsoft, Apple, IBM, Oracle, Amazon'
 
 // console.log(string.split(", "))
-

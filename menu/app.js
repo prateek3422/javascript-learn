@@ -52,7 +52,7 @@ const menu = [
     title: "bacon overflow",
     category: "breakfast",
     price: 8.99,
-    img: "./images/item-7.jpeg",
+    img: "https://images.unsplash.com/photo-1481931098730-318b6f776db0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1890&q=80",
     desc: `carry jianbing normcore freegan. Viral single-origin coffee live-edge, pork belly cloud bread iceland put a bird `,
   },
   {
@@ -60,7 +60,7 @@ const menu = [
     title: "american classic",
     category: "lunch",
     price: 12.99,
-    img: "./images/item-8.jpeg",
+    img: "https://images.unsplash.com/photo-1481931098730-318b6f776db0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1890&q=80",
     desc: `on it tumblr kickstarter thundercats migas everyday carry squid palo santo leggings. Food truck truffaut  `,
   },
   {
@@ -68,7 +68,7 @@ const menu = [
     title: "quarantine buddy",
     category: "shakes",
     price: 16.99,
-    img: "./images/item-9.jpeg",
+    img: "https://images.unsplash.com/photo-1481931098730-318b6f776db0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1890&q=80",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
   {
@@ -76,15 +76,54 @@ const menu = [
     title: "bison steak",
     category: "dinner",
     price: 22.99,
-    img: "./images/item-10.jpeg",
+    img: "https://images.unsplash.com/photo-1481931098730-318b6f776db0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1890&q=80",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
   },
 ];
 
 const sectionCenter = document.querySelector(".section-center");
 
+// const filterBtn = document.querySelectorAll(".filter-btn");
+const container = document.querySelectorAll(".btn-container")
+
 window.addEventListener("DOMContentLoaded", function () {
-  let displayMenu = menu.map((item) => {
+  displayMenuItems(menu);
+  const categories = menu.reduce(function( val, items){
+    if(!val.includes(items.category)){
+      val.push(items.category)
+    }
+    return val
+
+  }, ['all'])
+
+  const categoryBtn = categories.map((category) =>{
+
+    `<button class="filter-btn" type="button" data-id=${category} >${category} </button>`
+  } 
+  ).join("");
+  container.innerHTML = categoryBtn
+});
+
+const filterBtn = document.querySelectorAll(".filter-btn");
+
+filterBtn.forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    const category = e.currentTarget.dataset.id;
+    const menuCategory = menu.filter(function (menuItem) {
+      if (menuItem.category === category) {
+        return menuItem;
+      }
+    });
+    if (category === "all") {
+      displayMenuItems(menu);
+    } else {
+      displayMenuItems(menuCategory);
+    }
+  });
+});
+
+const displayMenuItems = (menuItems) => {
+  let displayMenu = menuItems.map((item) => {
     return `<article class="menu-item">
       <img src=${item.img} alt=${item.title} class="photo" />
       <div class="item-info">
@@ -99,9 +138,6 @@ window.addEventListener("DOMContentLoaded", function () {
     </article>`;
   });
 
-  displayMenu = displayMenu.join("")
-
+  displayMenu = displayMenu.join("");
   sectionCenter.innerHTML = displayMenu;
-  console.log(displayMenu)
-
-});
+};
