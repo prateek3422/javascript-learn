@@ -7,19 +7,19 @@
 // Symbol
 
 
-console.log(typeof  undefined)  //undefined
-console.log(typeof null) //object
+// console.log(typeof  undefined)  //undefined
+// console.log(typeof null) //object
 
 
 
 
 let challange = '30 Days Of JavScript'
-console.log(challange)
+console.log(challange.length-1)
 console.log(challange.length)
 console.log(challange.toUpperCase())
 console.log(challange.toLowerCase())
 console.log(challange.substring(3,6))
-console.log(challange.substring(3))
+console.log(challange.substring(1, challange.length-1))
 console.log(challange.includes("Script"))
 console.log(challange.split())
 console.log(challange.split(" "))
