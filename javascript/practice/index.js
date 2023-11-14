@@ -1,4 +1,4 @@
-//Q 1. Write a JavaScript program to display the current day and time in the following format.
+// Q 1. Write a JavaScript program to display the current day and time in the following format.
 // Sample Output : Today is : Tuesday.
 // Current time is : 10 PM : 30 : 38
 
@@ -37,9 +37,9 @@
 
 // console.log(`Current Time: ${hour} ${pre} : ${min} : ${sec}`)
 
-// Q2 Write a JavaScript program to get the current date.
-// Expected Output :
-// mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy
+// // Q2 Write a JavaScript program to get the current date.
+// // Expected Output :
+// // mm-dd-yyyy, mm/dd/yyyy or dd-mm-yyyy, dd/mm/yyyy
 
 // let day = date.getDate()
 // let month = date.getMonth()
@@ -56,7 +56,7 @@
 //   }
 // }
 
-//Q4 Write a JavaScript program to determine whether a given year is a leap year in the Gregorian calendar.
+// // Q4 Write a JavaScript program to determine whether a given year is a leap year in the Gregorian calendar.
 
 // const num = 2014;
 
@@ -67,7 +67,7 @@
 
 // }
 
-// Q5 Write a JavaScript program where the program takes a random integer between 1 and 10, and the user is then prompted to input a guess number. The program displays a message "Good Work" if the input matches the guess number otherwise "Not matched".
+// // Q5 Write a JavaScript program where the program takes a random integer between 1 and 10, and the user is then prompted to input a guess number. The program displays a message "Good Work" if the input matches the guess number otherwise "Not matched".
 
 // const num = Math.ceil(Math.random() * 10)
 
@@ -79,13 +79,13 @@
 //   console.log( "Not matched")
 // }
 
-// Q6 Write a JavaScript program to convert temperatures to and from Celsius, Fahrenheit.
-// [ Formula : c/5 = (f-32)/9 [ where c = temperature in Celsius and f = temperature in Fahrenheit ]
-// Expected Output :
-// 60°C is 140 °F
-// 45°F is 7.222222222222222°C
+// // Q6 Write a JavaScript program to convert temperatures to and from Celsius, Fahrenheit.
+// // [ Formula : c/5 = (f-32)/9 [ where c = temperature in Celsius and f = temperature in Fahrenheit ]
+// // Expected Output :
+// // 60°C is 140 °F
+// // 45°F is 7.222222222222222°C
 
-// c = (f-32) (5/9)
+// // c = (f-32) (5/9)
 
 // function temp(cel){
 //  let far =( cel * 9/5) +32
@@ -106,7 +106,7 @@
 // temp(60)
 // farnen(45)
 
-// Q7  Write a JavaScript program to get the difference between a given number and 13, if the number is broader than 13 return double the absolute difference.
+// // Q7  Write a JavaScript program to get the difference between a given number and 13, if the number is broader than 13 return double the absolute difference.
 
 // function diffrence(n) {
 //   if(n <= 13){
@@ -119,7 +119,7 @@
 // console.log(diffrence(32))
 // console.log(diffrence(11))
 
-// Q8 Write a JavaScript program to compute the sum of the two given integers. If the two values are the same, then return triple their sum.
+// // Q8 Write a JavaScript program to compute the sum of the two given integers. If the two values are the same, then return triple their sum.
 
 // function sum( a, b){
 //   if(a === b){
@@ -132,7 +132,7 @@
 // console.log(sum(10,20))
 // console.log(sum(10,10))
 
-// Q9  Write a JavaScript program to check a pair of numbers and return true if one of the numbers is 50 or if their sum is 50.
+// // Q9  Write a JavaScript program to check a pair of numbers and return true if one of the numbers is 50 or if their sum is 50.
 
 // function checkPair(a,b){
 //   if(a===50 || b===50 ||(a+b === 50) ){
@@ -1160,10 +1160,281 @@
 // console.log(test54([1,2,3,4,2,5,6]))
 // console.log(test54([1,2,3,4,5,5,5,6]))
 
+// Q69 Write a JavaScript program to replace all numbers with a specified number in an array of integers.
 
-// Q69 
+// function test55(arr, old, new_val){
+//     for(let i=0; i<arr.length; i++){
+//         if(arr[i]== old){
+//             arr[i] = new_val
+//         }
+//     }
+//    return arr
+
+// }
+
+// console.log(test55([1,2,3,2,2,2,8,9],2,5))
+
+// Q70 Write a JavaScript program to compute the sum of the absolute differences of consecutive numbers in a given array of integers.
+
+// function test56(arr) {
+//     let sum = 0
+
+//     for(let i=0; i<arr.length-1; i++){
+//      sum += Math.abs(arr[i] - arr[i+1])
+//     }
+//     console.log(sum)
+
+// }
+
+// console.log(test56([1,2,3,2,-5]))
+
+// Q71  Write a JavaScript program to change the case of the minimum number of letters to make a given string written in upper case or lower case.
+
+// function test57(a) {
+//     let x= 0
+//     let y=0
+
+//     for(let i=0; i<a.length; i++){
+//         if(/[A-Z]/.test(a[i])){
+//             // console.log(a[i])
+//             x++
+//         }else y++
+
+//     }
+//     if(y>x){
+//         return a.toLowerCase()
+//     }
+//         return a.toUpperCase()
+
+// }
+
+// console.log(test57("WRITe"))
+
+// Q72 Write a JavaScript program to check if there is at least one element in two given sorted arrays of integers.
+// function test58(arr1, arr2){
+
+//     for(let i=0; i<arr1.length; i++){
+//         if(arr2.indexOf(arr1[i]) != -1){
+//             return true
+
+//         }
+
+//     }
+//     return false
+// }
+
+// console.log(test58( [1,2,3],[5,4,5]))
+
+// Q73 Write a JavaScript program to check whether a given string contains only Latin letters and no two uppercase and no two lowercase letters are in adjacent positions.
+
+// function test59(a) {
+//     console.log(a.substring(0,1))
+// }
+// console.log(test59('aBc'))
+
+// Q74  reverse number
+
+// function test60(num) {
+
+//     let x = num.toString().split("")
+//     console.log(x)
+//     let start= 0
+//     let end = x.length
+
+//     while(start<end){
+//         let z  =x[start]
+//         x[start] = x[end]
+//         x[end]= z
+
+//         start++
+//         end--
+
+//     }
+//     for(let i=0; i<x.length; i++){
+//         console.log(x[i])
+//     }
+//     console.log(x)
+// }
+// console.log(test60(12345))
+
+// --------or----------
+
+// function test60(x){
+//     let rev =0
+//     while(x>0){
+//         let rem =  x%10
+//         rev = rev*10+rem
+//         x = Math.floor(x/10)
+//     }
+//     return rev
+// }
+// console.log(test60(12345))
+
+// Q 75 check palindrome
+
+// function test61(s){
+//     let rev = s.split("").reverse().join("")
+//     return (rev === s) ? "this string is palindrome" : "this string is not palindrome"
+// }
+// console.log(test61("lool"))
+// console.log(test61("loop"))
+
+// Q76 AlphaBetical order
+
+// function test62(s) {
+//     return s.split("").sort()
+// }
+// console.log(test62("apple"))
+
+// Q 77 first letter upperCAse
+
+// function test63(str) {
+//     let s = str.split(" ")
+//     let words = s.map(ele =>{
+//         return ele.substring(0,1).toUpperCase()+ele.substring(1)
+//     })
+//     return words.join(" ")
+// }
+// console.log(test63("hello my name is"))
+
+// Q78 repeted char
+// function test64(str){
+//     let occ = {}
+//     str.split("").map(ele =>{
+//        if( occ.hasOwnProperty(ele) === false){
+//         occ[ele] = +1
+//        }else{
+//         occ[ele]++
+//        }
+//     })
+//     return occ
+// }
+// console.log(test64("apple"))
+
+// Q79 add num in loops
+
+// function test65() {
+// // let arr = [1,2,3,4,5,6,7]
+// let arr = [1,2,3,4,5,11.2, true, "hello"]
+// let sum = 0
+// arr.forEach(ele =>{
+//     if(typeof ele === "number"){
+//         sum = sum + ele
+//     }
+// })
+
+// console.log(sum)
+// }
+
+// test65()
+
+// Q80  Write a JavaScript program to check whether a given string contains only Latin letters and no two uppercase and no two lowercase letters are in adjacent positions.
+
+// function test66(str) {
+//   const lowercase = Symbol =>{
+//     if("a" <= Symbol && Symbol <= "z" ){
+//       return true
+//     }
+//     return false
+//   }
+
+//   const upperCAse = Symbol =>{
+//     if("A" <= Symbol && Symbol <= "Z"){
+//       return true
+//     }
+//     return false
+//   }
+
+//   const first_lower = lowercase(str[0])
+//   const first_upper = upperCAse(str[0])
+
+//   if(!(first_lower || first_upper)){
+//     return false
+//   }
+
+//   for(let i =1; i<str.length;i++){
+//     if(i%2){
+//       if(first_lower === lowercase(str[i]) || first_upper === upperCAse(str[i])){
+//         return false
+//       }
+
+//     }else{
+//       if(first_lower !== lowercase(str[i] || first_upper !== upperCAse(str[i]))){
+//         return false
+//       }
+
+//     }
+//   }
+//   return true
+
+// }
+
+// console.log(test66("xYz"))
+
+// Q 81 Write a JavaScript program to find the number of inversions of a given array of integers.
+
+// function test67 (){
+//   const arr = [0,3,2,5,4,8,9]
+
+//   let ctr = 0
+
+//   for(let i=0; i<arr.length; i++){
+//     for(let j=i+1; j<arr.length; j++){
+//       if(arr[i] > arr[j]){
+//         ctr++
+//       }
+
+//     }
+
+//   }
+//   console.log(ctr)
+// }
+
+// test67()
+
+// Q 82 Write a JavaScript program to find the maximum number of a given positive integer by deleting exactly one digit of the given number.
+
+// function test68(){
+//   let num = 100
+
+// }
+
+// test68()
+
+// Q83 Write a JavaScript program to find two elements of an array such that their absolute difference is not larger than a given integer. However, it is as close as possible to the integer
+
+// function test69(arr, n){
+//   let max_val = -1
+
+//   for(let i=0; i<arr.length; i++){
+//     for(let j=i+1; j<arr.length; j++){
+//       const x = Math.abs(arr[i] - arr[j])
+
+//       if(x<=n){
+//         max_val = Math.max(max_val, x)
+
+//       }
+//        }
+//   }
+//   return max_val
+// }
+// console.log(test69([12, 10, 33, 34], 10));
+// console.log(test69([12, 10, 33, 34], 24));
+// console.log(test69([12, 10, 33, 44], 40));
 
 
+// Q84 Write a JavaScript program to find the number of times to replace a given number with the sum of its digits. This is until it converts to a single-digit number
+
+function test70(num){
+    let sum = 0
+    let count = 0
+
+    for(let i =0; i<num.length; i++){
+        console.log(i)
+
+        
+    }
+}
 
 
-
+console.log(test70( 190))
