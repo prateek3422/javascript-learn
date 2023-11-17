@@ -1422,19 +1422,168 @@
 // console.log(test69([12, 10, 33, 34], 24));
 // console.log(test69([12, 10, 33, 44], 40));
 
-
 // Q84 Write a JavaScript program to find the number of times to replace a given number with the sum of its digits. This is until it converts to a single-digit number
 
-function test70(num){
-    let sum = 0
-    let count = 0
+// function test70(num) {
+//   const digitsum = () => {
+//     let sum = 0;
 
-    for(let i =0; i<num.length; i++){
-        console.log(i)
+//     while (num > 0) {
+//       sum += num % 10;
+//       num = Math.floor(num / 10);
+//     }
+//     return sum;
+//   };
 
-        
-    }
-}
+//   let count = 0;
+//   while (num >= 10) {
+//     count += 1;
+//     num = digitsum(num);
+//   }
+
+//   return count;
+// }
+
+// console.log(test70(123));
+// console.log(test70(255));
+
+// Q 85 Write a JavaScript program to divide an integer by another integer as long as the result is an integer and return the result.
+
+// function test71(x,y){
+//     if(y==1){
+//         return x
+//     }else{
+//         while(x%y === 0){
+//             x /= y
+//         }
+//         return x
+//     }
+//     }
+
+// console.log(test71(-12, 2))
+
+// Q86 Write a JavaScript program to find the number of sorted pairs formed by arrays of integers. This is such that one element in the pair is divisible by the other one.
+
+// For example - The output of [1, 3, 2] ->2 - (1,3), (1,2).
+// The output of [2, 4, 6] -> 2 - (2,4), (2,6)
+// The output of [2, 4, 16] -> 3 - (2,4), (2,16), (4,16)
+
+// function tets72(arr) {
+//   let count = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = i+1; j < arr.length; j++) {
+//       if(arr[i]%arr[j] == 0 || arr[j] % arr[i] == 0){
+//         count++
+//       }
+//     }
+//   }
+//   return count
+// }
+// console.log(tets72( [2, 4, 6]))
+
+// Q87 Write a JavaScript program to create the dot products of two given 3D vectors.
+
+// Note: The dot product is the sum of the products of the corresponding entries of the two sequences of numbers.
+
+// function test73(arr1,arr2) {
+//   let  sum =0
+//   for(let i=0; i<3; i++){
+//     let dot = arr1[i]* arr2[i]
+//     sum = sum+dot
+//   }
+//   return sum
+// }
+
+// console.log(test73([1,2,3], [1,2,3]))
+
+// Q88 Write a JavaScript program to sort an array of all prime numbers between 1 and a given integer.
+// function test74(num) {
+//   let isPrime;
+//   let arr = [];
+//   for (let i = 2; i <= num; i++) {
+//     isPrime = true;
+//     for (let j = 2; j <= i / 2; j++) {
+//       if (i % j == 0) {
+//         isPrime = false;
+//         break;
+//       }
+//     }
+//     if (isPrime === true) {
+//       arr.push(i);
+//     }
+//   }
+//   console.log(arr);
+// }
+
+// console.log(test74(5))
+
+// Q89  Write a JavaScript program to find the number of even values in sequence before the first occurrence of a given number.
+
+// function test75(arr,num){
+//   let count =0
+
+//   for(let i=1; i<arr.length; i++){
+//     if(i%2===0 ){
+//       count++
+//     }
+
+//     if(arr[i] === num){
+//       return count
+//     }
+//   }
+//   return -1
+
+// }
+
+// console.log(test75([1,2,3,4,5,6,7,8],5))
+
+// IMP => Q90 Write a JavaScript program to find the number of trailing zeros in the decimal representation of the factorial of a given number.
+
+// function test76(x) {
+//   let mul = 1;
+//   for (let i = 1; i <= x; i++) {
+//     mul = mul * i;
+//   }
+//   let count = 0;
+//   while (mul > 0) {
+//     if (mul % 10 === 0) {
+//       count++;
+//       mul = mul / 10;
+//     } else break;
+//   }
+//   console.log(count);
+// }
+// console.log(test76(10));
+
+// ==========OR=============
+
+// function trailing_zeros_factorial(n) {
+//     var result = 0;
+//     for (var i = 5; i <= n; i = i+) {
+//         console.log(i)
+//         var num = i;
+//         while (num % 5 === 0) {
+//             num /= 5;
+//             result++;
+//         }
+//     }
+//     return result;
+// }
+
+// // console.log(trailing_zeros_factorial(8))
+// // console.log(trailing_zeros_factorial(9))
+// console.log(trailing_zeros_factorial(10))
 
 
-console.log(test70( 190))
+// Q91 Write a JavaScript program to calculate the sum of n + n/2 + n/4 + n/8 + .... where n is a positive integer and all divisions are integers.
+// function test77(x){
+//     let sum = 0
+//     while(x>0){
+//         sum += x
+//         x = Math.floor(x/2)
+//     }
+//     console.log(sum)
+// }
+// console.log(test77(8))
+
+// Q92 

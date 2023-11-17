@@ -1,2 +1,14 @@
 {
+    "synthwave84.brightness": 1,
+    "tailwindCSS.emmetCompletions": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "diffEditor.codeLens": true,
+    "debug.javascript.autoAttachFilter": "disabled",
+    "debug.javascript.unmapMissingSources": true,
+    "launch": {
+        
+        "configurations": [],
+        "compounds": []
+    }
 }
