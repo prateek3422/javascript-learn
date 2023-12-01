@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Calculator</title>
+  </head>
+
+  <style>
+    body {
+      background-color: rgb(243, 42, 42);
+    }
+    .main {
+      background-color: rgb(224, 40, 40);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .box {
+      width: 50vw;
+      height: 50vh;
+      background-color: white;
+      padding: 1em;
+    }
+
+    #input {
+      width: 100%;
+      /* height: 5rem; */
+      border: 1px solid #ddd;
+      border-radius: 1px;
+      height: 60px;
+      padding-right: 15px;
+      padding-top: 10px;
+      text-align: right;
+      margin-right: 6px;
+      font-size: 2.5rem;
+      overflow-x: auto;
+      transition: all 0.2s ease-in-out;
+    }
+    .btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .opretionn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* background-color: white; */
+      margin-top: 1rem;
+      border: 1px solid black;
+      width: 5rem;
+      height: 3rem;
+    }
+    .numbers {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* background-color: white; */
+      margin-top: 1rem;
+      border: 1px solid black;
+      width: 5rem;
+      height: 3rem;
+    }
+
+    .nums {
+      /* border: 1px solid black; */
+      /* display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; */
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+    }
+
+    .equal {
+      background-color: rgb(100, 100, 208);
+      height: 30vh;
+    }
+  </style>
+  <body>
+    <div class="main">
+      <div class="box">
+        <input type="text" placeholder="0" id="input" />
+        <div class="btn">
+          <button class="add opretionn buttons">+</button>
+          <button class="sub opretionn buttons">-</button>
+          <button class="mul opretionn buttons">*</button>
+          <button class="div opretionn buttons">/</button>
+          <div class="nums">
+            <button class="div buttons">7</button>
+            <button class="div buttons">8</button>
+            <button class="div buttons">9</button>
+
+            <button class="div buttons">4</button>
+            <button class="div buttons">5</button>
+            <button class="div buttons">6</button>
+            <button class="div buttons">1</button>
+            <button class="div buttons">2</button>
+            <button class="div buttons">3</button>
+            <button class="div buttons">0</button>
+            <button class="div buttons">.</button>
+            <button class="div buttons">c</button>
+            <button class="div buttons">DEL</button>
+          </div>
+          <button class="div opretionn equal buttons">=</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let string = "";
+    const buttons = document.querySelectorAll(".buttons");
+    let display = document.querySelector("input");
+    Array.from(buttons).forEach((btn) => {
+      // console.log(btn)
+      btn.addEventListener("click", function (e) {
+
+        if(e.target.innerHTML === "="){
+          string = eval(string)
+          display.value = string
+        }else if(e.target.innerHTML === "c"){
+          string = ""
+          display.value = string
+        }else if(e.target.innerHTML === "DEL"){
+          string = string.substring(0,string.length-1)
+          display.value = string
+        }
+        
+        else{
+          string += e.target.innerHTML;
+          display.value = string;
+        }
+      });
+    });
+  </script>
+</html>

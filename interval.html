@@ -15,32 +15,24 @@
     </div>
   </body>
   <script>
-    const start = document.querySelector(".start")
+    const start = document.querySelector(".start");
 
     const stop = document.querySelector(".stop");
 
-    document.querySelector("keyboard").addEventListener("keydown")
+    // document.querySelector("keyboard").addEventListener("keydown");
     let interval;
 
-    const inter = function (){ 
-        console.log(new Date())
+    const inter = function () {
+      let date = new Date();
+      console.log(date.getSeconds());
     };
 
-   start.addEventListener("click", () => {
-    
-    interval =   setInterval(inter,1000)
+    start.addEventListener("click", () => {
+      interval = setInterval(inter, 1000);
+    });
 
-
-});
-   
-stop.addEventListener("click", () =>{
-        clearInterval(interval)
-    })
-
-
-
-
-
-
+    stop.addEventListener("click", () => {
+      clearInterval(interval);
+    });
   </script>
 </html>

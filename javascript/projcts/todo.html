@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      body {
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+      .main {
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+      }
+      .btn {
+        background-color: rgb(93, 93, 221);
+        margin-left: 2rem;
+        width: 4rem;
+        display: flex;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 1rem;
+        color: black;
+      }
+      form input {
+        width: 25rem;
+        height: 1.5rem;
+        background-color: white;
+      }
+
+      .page {
+        background-color: white;
+        margin-top: 5rem;
+        width: 50%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        /* height: 2.5rem; */
+        font-style: normal;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+      .items {
+        /* border: 1px solid red; */
+        list-style: none;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      hr {
+        width: 100%;
+      }
+
+      .page {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .textUpdate {
+        display: none;
+      }
+      textarea {
+        resize: none;
+        border: none;
+      }
+
+      /* .item li{  
+        border: 1px solid rgb(255, 170, 0);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <form>
+        <input
+          type="text"
+          name="todo"
+          id="todo_input"
+          placeholder="Enter your todo"
+        />
+      </form>
+      <button type="submit" class="btn">Add</button>
+    </div>
+
+    <div class="page"></div>
+  </body>
+  <script>
+    "use strict";
+    const todo = document.querySelector("#todo_input");
+    const add = document.querySelector(".btn");
+    const item = document.querySelector(".page");
+
+    const itemArray = localStorage.getItem("todo-item")
+      ? JSON.parse(localStorage.getItem("todo-item"))
+      : [];
+
+    // console.log(itemArray)
+
+    add.addEventListener("click", function () {
+      itemArray.push(todo.value);
+      localStorage.setItem("todo-item", JSON.stringify(itemArray));
+      location.reload();
+    });
+
+    const itemlist = () => {
+      let list = "";
+      for (let i = 0; i < itemArray.length; i++) {
+        // console.log(itemArray[i]);
+        list += `
+        <div class="items">
+        <div class="inputUpdate">
+          <textarea class="text-area" disabled>${itemArray[i]}</textarea>
+        </div>
+        <i class="fas fa-edit"></i>
+        <i class="fa-solid fa-check"></i>
+      </div>
+
+      <div class="textUpdate">
+        <button class="fa-solid fa-floppy-disk"></button>
+        <button class="fa-solid fa-xmark cancle"></button>
+        </div>
+      <hr />
+        `;
+      }
+      item.innerHTML = list;
+      deleteList();
+      saveItem();
+      editItem();
+      cancleItem();
+    };
+
+    const editItem = () => {
+      const input = document.querySelectorAll(".inputUpdate textarea");
+      const edit = document.querySelectorAll(".fa-edit");
+      const update = document.querySelectorAll(".textUpdate");
+      edit.forEach((ed, i) => {
+        ed.addEventListener("click", function () {
+          update[i].style.display = "block";
+          input[i].disabled = false;
+          
+        });
+      });
+    };
+
+    const saveItem = () => {
+      const saveBtn = document.querySelectorAll(".fa-floppy-disk");
+      const input = document.querySelectorAll(".inputUpdate textarea");
+
+      saveBtn.forEach((sb, i) => {
+        sb.addEventListener("click", function () {
+          itemArray[i] = input[i].value;
+          localStorage.setItem("todo-item", JSON.stringify(itemArray));
+          location.reload();
+        });
+      });
+    };
+
+    const cancleItem = () => {
+      const cancelbtn = document.querySelectorAll(".fa-xmark");
+      const update = document.querySelectorAll(".textUpdate");
+      const input = document.querySelectorAll(".inputUpdate textarea");
+      cancelbtn.forEach((cb, i) => {
+        cb.addEventListener("click", function () {
+          update[i].style.display = "none";
+          input[i].disabled = true;
+
+          location.reload()
+        });
+      });
+    };
+
+    const deleteList = () => {
+      const deleteBtn = document.querySelectorAll(".fa-check");
+      deleteBtn.forEach((db, i) => {
+        db.addEventListener("click", function () {
+          deleteItem(i);
+        });
+      });
+    };
+
+    const deleteItem = (i) => {
+      itemArray.splice(i, 1);
+      localStorage.setItem("todo-item", JSON.stringify(itemArray));
+      location.reload();
+    };
+
+    window.onload = function () {
+      itemlist();
+    };
+  </script>
+</html>
