@@ -104,8 +104,3 @@ const menu = [
     displayMenu = displayMenu.join("")
     sectionCenter.innerHTML = displayMenu
   })
-
-  filterBtn.forEach((btn) => {
-    btn.addEventListener
-    
-  });

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todo</title>
+    <style>
+      body {
+        background-color: #000;
+      }
+      .main {
+        /* width: 100%;
+            height: 100vh; */
+        margin-top: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #input {
+        width: 30vw;
+        height: 4.5vh;
+      }
+      .btn {
+        height: 5vh;
+        margin-left: 1rem;
+      }
+      .btn:hover {
+        background-color: rgb(96, 96, 182);
+        cursor: pointer;
+      }
+      .todo-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .box {
+        background-color: white;
+        margin-top: 5rem;
+        width: 50%;
+        height: 70vh;
+        border: 1px solid rgb(255, 255, 255);
+      }
+      .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .update-input {
+        display: none;
+      }
+
+      #text-inpu{
+        margin-bottom: 2rem;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <input type="text" placeholder="Enter your wishes" id="input" />
+      <button class="btn">ADD</button>
+    </div>
+    <div class="todo-list">
+      <div class="box"></div>
+    </div>
+  </body>
+  <script>
+    const button = document.querySelector(".btn");
+    const input = document.querySelector("#input");
+    const todo = document.querySelector(".box");
+
+    const itemArray = localStorage.getItem("todo-list")
+      ? JSON.parse(localStorage.getItem("todo-list"))
+      : [];
+
+    //   console.log(itemArray)
+
+    button.addEventListener("click", function () {
+      itemArray.push(input.value);
+      localStorage.setItem("todo-list", JSON.stringify(itemArray));
+      location.reload();
+    });
+
+    const itemlist = () => {
+      let list = "";
+      itemArray.forEach((i) => {
+        list += `<div class="item">
+            <textarea id="text-input" style="width: 579px; height: 36px;" disabled>${i}</textarea>
+            <div class="btn1">
+                <button class="delete">Del</button>
+            <button class="edit">Edit</button>
+            </div>
+
+            
+        </div>
+        <div class="update-input">
+            <button  class="save">save</button>
+            <button class="cancel">cancel</button>
+        </div>
+        <hr />
+        `;
+
+        
+      });
+      todo.innerHTML = list
+
+      deleteList()
+      EditList()
+      saveList()
+      cancelList()
+    };
+
+    const EditList = () =>{
+      const editbtn =  document.querySelectorAll(".edit")
+      const input = document.querySelectorAll(".item textarea");
+      const update = document.querySelectorAll(".update-input")
+      editbtn.forEach((eb, i) =>{
+        eb.addEventListener("click", function(){
+          update[i].style.display ="block"
+          input[i].disabled = false
+
+        })
+      })
+    }
+
+
+    const saveList = () =>{
+      const save = document.querySelectorAll(".save")
+      const input = document.querySelectorAll(".item textarea");
+      save.forEach((sb, i) =>{
+        sb.addEventListener("click", function(){
+          itemArray[i]  = input[i].value
+          localStorage.setItem("todo-list", JSON.stringify(itemArray));
+          location.reload()
+        })
+      })
+    }
+
+
+    
+    const cancelList = () =>{
+      const cancelbtn =  document.querySelectorAll(".cancel")
+      const input = document.querySelectorAll(".item textarea");
+      const update = document.querySelectorAll(".update-input")
+      cancelbtn.forEach((cb, i) =>{
+        cb.addEventListener("click", function(){
+          update[i].style.display ="none"
+          input[i].disabled = true
+          location.reload()
+
+        })
+      })
+    }
+
+    const deleteList = () =>{
+      const dbn = document.querySelectorAll(".delete")
+      dbn.forEach((db, i) =>{
+        db.addEventListener("click", function(){
+          deleteItem(i)
+        })
+      })
+    }
+
+    const deleteItem =(i) =>{
+      itemArray.splice(i,1)
+      localStorage.setItem("todo-list", JSON.stringify(itemArray));
+      location.reload();
+    }
+
+    window.onload = function () {
+      itemlist();
+    };
+  </script>
+</html>
